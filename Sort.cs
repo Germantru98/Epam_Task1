@@ -7,22 +7,22 @@ using System.Threading.Tasks;
 namespace Epam_Task1
 {
     class Sort
-    {
+    {   //Класс, реализующий быструю сортировку для массива целых чисел
         private int partition(int[] array, int start, int end)
         {
-            int tmp;//swap helper
-            int marker = start;//divides left and right subarrays
+            int tmp;
+            int marker = start;
             for (int i = start; i <= end; i++)
             {
-                if (array[i] < array[end]) //array[end] is pivot
+                if (array[i] < array[end])
                 {
-                    tmp = array[marker]; // swap
+                    tmp = array[marker]; 
                     array[marker] = array[i];
                     array[i] = tmp;
                     marker += 1;
                 }
             }
-            //put pivot(array[end]) between left and right subarrays
+            
             tmp = array[marker];
             array[marker] = array[end];
             array[end] = tmp;

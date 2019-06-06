@@ -10,6 +10,7 @@ namespace Epam_Task1
     class ArrayLoader
     {
         public int[] array { get; private set; }
+        //Метод для заполнения массива целыми числами из файла input
         private void ReadFromFile()
         {
             using (StreamReader stream = new StreamReader("input.txt"))
@@ -68,7 +69,7 @@ namespace Epam_Task1
                             }
                         }
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         Console.WriteLine($"{e.Message}\nЗавершение работы приложения...");
                     }
@@ -76,6 +77,7 @@ namespace Epam_Task1
 
             }
         }
+        //Метод для заполнения массива целыми числами при помощи клавиатуры
         private void ConsoleReader()
         {
             int n = 0;
@@ -136,8 +138,8 @@ namespace Epam_Task1
                         }
                     }
                 }
-                catch(Exception e)
-                {   
+                catch (Exception e)
+                {
                     Console.WriteLine($"{e.Message}\nВведите значения массива начиная с позиции ->{errorposition}");
                     for (int i = errorposition; i < n; i++)
                     {
@@ -146,6 +148,7 @@ namespace Epam_Task1
                 }
             }
         }
+        //Метод для получения массива другими пользователями
         public int[] GetArray(int readertype)
         {
             if (readertype == 1)
