@@ -21,7 +21,7 @@ namespace Epam_Task1
         {
             ArrayLoader l = new ArrayLoader();
             Sort s = new Sort();
-            int[] arr = l.GetArray(1);
+            int[] arr = l.GetArray(0);
             s.ArraySort(arr);
             ShowArray(arr);
                        
