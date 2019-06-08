@@ -16,9 +16,31 @@ namespace Epam_Task1
         {
             ArrayLoader l = new ArrayLoader();
             Sort s = new Sort();
-            int[] arr = l.GetArray(1);
-            s.ArraySort(arr);
-            ShowArray(arr);
+            Console.WriteLine("Выберите вариант ввода массива\n0-c клавиатуры\n1-из файла");
+            int caseSwitch = int.Parse(Console.ReadLine());
+            int[] arr;
+            switch (caseSwitch)
+            {
+                case 0:
+                    {
+                        arr = l.GetArray(0);
+                        s.ArraySort(arr);
+                        ShowArray(arr);
+                        break;
+                    }
+                case 1:
+                    {
+                        arr = l.GetArray(1);
+                        s.ArraySort(arr);
+                        ShowArray(arr);
+                        break;
+                    }
+                default:
+                    {
+                        Console.WriteLine("Введено неверное значение");
+                        break;
+                    }
+            }
         }
     }
 }
