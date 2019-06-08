@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Epam_Task1
 {
-    class ArrayLoader
+    internal class ArrayLoader
     {
         public int[] array { get; private set; }
-        //Метод для заполнения массива целыми числами из файла input
+
         private void ReadFromFile()
         {
             using (StreamReader stream = new StreamReader("input.txt"))
@@ -22,7 +19,6 @@ namespace Epam_Task1
 
                     if (int.TryParse(Console.ReadLine(), out n))
                     {
-
                     }
                     else
                     {
@@ -53,31 +49,38 @@ namespace Epam_Task1
                             break;
                         }
                     }
-
                 }
                 finally
                 {
                     try
                     {
-                        array = new int[n];
+                        int[] tmparr = new int[n];
                         string[] _data = stream.ReadToEnd().Split(' ');
+                        int count_of_items_in_file = _data.Count();
+                        if (n > count_of_items_in_file)
+                        {
+                            Console.WriteLine("Введенная размерность больше чем колличество элементов в файле\n" +
+                                $"Создан массив размерности {count_of_items_in_file}");
+                            n = count_of_items_in_file;
+                            Array.Resize(ref tmparr, n);
+                        }
                         for (int i = 0; i < n; i++)
                         {
-                            if (!int.TryParse(_data[i], out array[i]))
+                            if (!int.TryParse(_data[i], out tmparr[i]))
                             {
                                 throw new Exception("Ошибка при считывании файла");
                             }
                         }
+                        array = tmparr;
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine($"{e.Message}\nЗавершение работы приложения...");
                     }
                 }
-
             }
         }
-        //Метод для заполнения массива целыми числами при помощи клавиатуры
+
         private void ConsoleReader()
         {
             int n = 0;
@@ -87,7 +90,6 @@ namespace Epam_Task1
 
                 if (int.TryParse(Console.ReadLine(), out n))
                 {
-
                 }
                 else
                 {
@@ -118,7 +120,6 @@ namespace Epam_Task1
                         break;
                     }
                 }
-
             }
             finally
             {
@@ -148,7 +149,7 @@ namespace Epam_Task1
                 }
             }
         }
-        //Метод для получения массива другими пользователями
+
         public int[] GetArray(int readertype)
         {
             if (readertype == 1)
