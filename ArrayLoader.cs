@@ -15,12 +15,9 @@ namespace Epam_Task1
                 int n = 0;
                 try
                 {
-                    Console.WriteLine("Введите размерность масиива");
+                    Console.WriteLine("Введите размерность масcива");
 
-                    if (int.TryParse(Console.ReadLine(), out n))
-                    {
-                    }
-                    else
+                    if (!int.TryParse(Console.ReadLine(), out n) || n <= 0)
                     {
                         throw new Exception("Размерность массива введена неверно");
                     }
@@ -32,7 +29,7 @@ namespace Epam_Task1
                     while (attempt > 0)
                     {
                         int number;
-                        if (!int.TryParse(Console.ReadLine(), out number))
+                        if (!int.TryParse(Console.ReadLine(), out number) || number <= 0)
                         {
                             attempt--;
                             Console.WriteLine($"Значение введено неверно\nПопыток осталось:{attempt}");
@@ -88,10 +85,7 @@ namespace Epam_Task1
             {
                 Console.WriteLine("Введите размерность масиива");
 
-                if (int.TryParse(Console.ReadLine(), out n))
-                {
-                }
-                else
+                if (!int.TryParse(Console.ReadLine(), out n) || n <= 0)
                 {
                     throw new Exception("Размерность массива введена неверно");
                 }
@@ -103,7 +97,7 @@ namespace Epam_Task1
                 while (attempt > 0)
                 {
                     int number;
-                    if (!int.TryParse(Console.ReadLine(), out number))
+                    if (!int.TryParse(Console.ReadLine(), out number) || n <= 0)
                     {
                         attempt--;
                         Console.WriteLine($"Значение введено неверно\nПопыток осталось:{attempt}");
